@@ -14,12 +14,15 @@ def main():
     parser.add_argument("--model", default="small",
                         choices=whisper.available_models(), help="name of the Whisper model to use")
     parser.add_argument("--output_dir", "-o", type=str,
-                        default=".", help="directory to save the outputs")
+                        default="./output", help="directory to save the outputs")
     parser.add_argument("--verbose", type=str2bool, default=False,
                         help="Whether to print out the progress and debug messages")
 
     parser.add_argument("--task", type=str, default="transcribe", choices=[
                         "transcribe", "translate"], help="whether to perform X->X speech recognition ('transcribe') or X->English translation ('translate')")
+
+    parser.add_argument("--language", type=str, default="Japanese", choices=[
+                        "Japanese", "English"], help="language spoken in the audio, specify None to perform language detection")
 
     args = parser.parse_args().__dict__
     model_name: str = args.pop("model")

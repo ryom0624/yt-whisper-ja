@@ -2,3 +2,6 @@ dist
 .DS_Store
 *.egg-info
 yt_whisper/__pycache__
+
+output/*
+!output/.gitkeep
